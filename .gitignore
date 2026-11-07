@@ -1,0 +1,7 @@
+**/node_modules/
+Frontend/dist/
+**/.env
+**/.env.*
+!**/.env.example
+*.log
+*.dump
