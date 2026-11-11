@@ -3,7 +3,7 @@ services:
     name: businessflow
     runtime: node
     plan: free
-    buildCommand: npm ci --prefix Backend && npm ci --prefix Frontend && npm run build --prefix Frontend
+    buildCommand: npm ci --prefix Backend && npm ci --include=dev --prefix Frontend && npm run build --prefix Frontend
     startCommand: node Backend/setup.js && node Backend/index.js
     healthCheckPath: /health/db
     envVars:
