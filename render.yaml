@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: businessflow
+    runtime: node
+    plan: free
+    buildCommand: npm ci --prefix Backend && npm ci --prefix Frontend && npm run build --prefix Frontend
+    startCommand: node Backend/setup.js && node Backend/index.js
+    healthCheckPath: /health/db
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22
+      - key: DATABASE_URL
+        sync: false

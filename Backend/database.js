@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-const pool = new Pool({
+const pool = new Pool(process.env.DATABASE_URL ? { connectionString: process.env.DATABASE_URL, connectionTimeoutMillis: 10000 } : {
   host: process.env.PGHOST || '127.0.0.1',
   database: process.env.PGDATABASE || 'businessflow',
   user: process.env.PGUSER || 'postgres',

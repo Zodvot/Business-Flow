@@ -86,7 +86,7 @@ app.use('/api', (request, response) => response.status(404).json({ error: 'Unkno
 app.use(express.static(require('node:path').join(__dirname, '../Frontend/dist')));
 
 require('./migrate')().then(() => {
-  app.listen(port, '127.0.0.1', () => {
+  app.listen(port, process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1', () => {
     console.log('BusinessFlow is ready at http://127.0.0.1:' + port);
   });
 }).catch(error => {
